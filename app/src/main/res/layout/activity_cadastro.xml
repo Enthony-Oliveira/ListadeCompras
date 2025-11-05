@@ -20,4 +20,50 @@
         >
     </TextView>
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@android:drawable/ic_menu_camera"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/Camera_produto"
+        android:layout_margin="10dp"
+        >
+    </ImageView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/NomeProduto"
+        android:hint="Nome do Produto"
+        android:layout_margin="10dp"
+        >
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/Qtd_itens"
+        android:hint="Quantidade"
+        >
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_margin="10dp"
+        android:id="@+id/txt_valor"
+        android:hint="R$ 0.00"
+        >
+    </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_inserir"
+        android:layout_margin="10dp"
+        android:text="Inserir Produto"
+        >
+    </Button>
 </LinearLayout>
