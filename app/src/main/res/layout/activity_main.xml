@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Adicionar Produto"
-        android:id="@+id/btn_adicionar">
+        android:id="@+id/btn_adicionar"
+        android:layout_margin="10dp">
     </Button>
 
     <TextView
