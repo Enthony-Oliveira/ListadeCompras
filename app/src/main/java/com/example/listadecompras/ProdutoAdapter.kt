@@ -15,7 +15,6 @@ class ProdutoAdapter(contexto : Context) : ArrayAdapter<Produto>(contexto,0) {
         if (convertView != null) {
             v = convertView
         } else {
-            //TEMOS QUE FAZER NA MAO
             v = LayoutInflater.from(context).inflate(R.layout.list_view_item, parent, false)
         }
 
