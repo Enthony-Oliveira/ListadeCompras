@@ -24,5 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         val list_view_produtos = findViewById<ListView>(R.id.list_produtos)
         list_view_produtos.adapter = adaptador
+
+        var total = 0.0
+
+        for (produto in produtosglobal) {
+            total = total + (produto.quanitdade + produto.valor)
+        }
     }
 }
