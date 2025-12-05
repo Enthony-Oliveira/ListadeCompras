@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import java.text.NumberFormat
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +31,12 @@ class MainActivity : AppCompatActivity() {
         var total = 0.0
 
         for (produto in produtosglobal) {
-            total = total + (produto.quanitdade + produto.valor)
+            total = total + (produto.quanitdade * produto.valor)
         }
+
+        val txt_total = findViewById<TextView>(R.id.txt_total)
+
+        val f = NumberFormat.getNumberInstance(Locale("pt", "br"))
+        txt_total.text = "TOTAL: ${ f.format (total)}"
     }
 }
