@@ -38,7 +38,6 @@ fun carregarLista(context: Context) {
 
 class ProdutoAdapter(contexto: Context) : ArrayAdapter<Produto>(contexto, 0) {
 
-    // 🔥 ADICIONADO → callback para avisar a Activity
     var onItemRemoved: (() -> Unit)? = null
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -68,17 +67,14 @@ class ProdutoAdapter(contexto: Context) : ArrayAdapter<Produto>(contexto, 0) {
 
             btn_deletar.setOnClickListener {
 
-                // Remove da lista + adapter
                 this.remove(item)
                 produtosglobal.remove(item)
 
-                // Salva no SharedPreferences
                 salvarLista(context)
                 notifyDataSetChanged()
 
                 Toast.makeText(context, "Produto excluído", Toast.LENGTH_SHORT).show()
 
-                // 🔥 AVISA a Activity que algo mudou
                 onItemRemoved?.invoke()
             }
         }

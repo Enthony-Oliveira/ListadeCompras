@@ -28,16 +28,13 @@ class MainActivity : AppCompatActivity() {
         val list_view_produtos = findViewById<ListView>(R.id.list_produtos)
         list_view_produtos.adapter = adaptador
 
-        // 🔥 QUANDO APAGAR UM ITEM, ATUALIZA O TOTAL
         adaptador.onItemRemoved = {
             atualizarTotal()
         }
 
-        // Calcula o total inicial
         atualizarTotal()
     }
 
-    // 🔥 FUNÇÃO QUE ATUALIZA O TOTAL NA TELA
     private fun atualizarTotal() {
         var total = 0.0
 
