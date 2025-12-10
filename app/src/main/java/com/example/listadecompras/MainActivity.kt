@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        val botaoInserir =findViewById<Button>(R.id.btn_adicionar)
+        val botaoInserir = findViewById<Button>(R.id.btn_adicionar)
         botaoInserir.setOnClickListener {
             val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
@@ -28,15 +28,25 @@ class MainActivity : AppCompatActivity() {
         val list_view_produtos = findViewById<ListView>(R.id.list_produtos)
         list_view_produtos.adapter = adaptador
 
+        // 🔥 QUANDO APAGAR UM ITEM, ATUALIZA O TOTAL
+        adaptador.onItemRemoved = {
+            atualizarTotal()
+        }
+
+        // Calcula o total inicial
+        atualizarTotal()
+    }
+
+    // 🔥 FUNÇÃO QUE ATUALIZA O TOTAL NA TELA
+    private fun atualizarTotal() {
         var total = 0.0
 
         for (produto in produtosglobal) {
-            total = total + (produto.quanitdade * produto.valor)
+            total += produto.quanitdade * produto.valor
         }
 
         val txt_total = findViewById<TextView>(R.id.txt_total)
-
         val f = NumberFormat.getNumberInstance(Locale("pt", "br"))
-        txt_total.text = "TOTAL: ${ f.format (total)}"
+        txt_total.text = "TOTAL R$: ${f.format(total)}"
     }
 }

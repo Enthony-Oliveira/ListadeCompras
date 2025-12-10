@@ -35,10 +35,15 @@ fun carregarLista(context: Context) {
         produtosglobal.addAll(listaSalva)
     }
 }
+
 class ProdutoAdapter(contexto: Context) : ArrayAdapter<Produto>(contexto, 0) {
 
+    // 🔥 ADICIONADO → callback para avisar a Activity
+    var onItemRemoved: (() -> Unit)? = null
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val v = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_view_item, parent, false)
+        val v = convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.list_view_item, parent, false)
 
         val item = getItem(position)
 
@@ -50,7 +55,6 @@ class ProdutoAdapter(contexto: Context) : ArrayAdapter<Produto>(contexto, 0) {
 
         if (item != null) {
             txt_produto.text = item.nome
-
             txt_quantidade.text = "Qtd: ${item.quanitdade}"
 
             val formatador = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
@@ -64,13 +68,18 @@ class ProdutoAdapter(contexto: Context) : ArrayAdapter<Produto>(contexto, 0) {
 
             btn_deletar.setOnClickListener {
 
+                // Remove da lista + adapter
                 this.remove(item)
                 produtosglobal.remove(item)
 
+                // Salva no SharedPreferences
                 salvarLista(context)
                 notifyDataSetChanged()
 
                 Toast.makeText(context, "Produto excluído", Toast.LENGTH_SHORT).show()
+
+                // 🔥 AVISA a Activity que algo mudou
+                onItemRemoved?.invoke()
             }
         }
         return v
