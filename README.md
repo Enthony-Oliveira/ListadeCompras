@@ -53,3 +53,11 @@ Aplicação Android nativa desenvolvida para gerenciamento prático e intuitivo 
 1. **Clonar o repositório:**
    ```bash
    git clone [https://github.com/Enthony-Oliveira/ListadeCompras.git](https://github.com/Enthony-Oliveira/ListadeCompras.git)
+
+
+👨‍💻 Autor
+Desenvolvido por Enthony Oliveira
+
+💼 LinkedIn:(https://www.linkedin.com/in/enthonyoliveira/)
+🐙 GitHub: @Enthony-Oliveira
+✉️ E-mail: oliveiraenthony987@gmail.com
